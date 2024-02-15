@@ -73,7 +73,7 @@ bool Game::keyInput(int key)
 
 bool Game::checkDefeat()
 {
-	return (!(up(true) || down(true)));// || left(true) || right(true)));
+	return (!(up(true) || down(true)) || left(true) || right(true)));
 }
 
 bool Game::checkVictory()
