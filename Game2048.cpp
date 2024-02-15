@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
+//#include <cstdlib>
 #include <ctime>
 #include <conio.h>
 #include <stdlib.h>
