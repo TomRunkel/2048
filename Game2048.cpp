@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-//#include <cstdlib>
 #include <ctime>
 #include <conio.h>
 #include <stdlib.h>
@@ -51,13 +50,11 @@ void Game::print()
 
 void Game::newTwo()
 {
-
 	srand(time(0));
 	int position = rand() % (ROWS * COLUMNS);
-	for  (int i = 0; body[position / ROWS][position % COLUMNS] != 0; i++)
+	for  (; body[position / ROWS][position % COLUMNS] != 0;)
 	{
 		position = (position + 1) % (ROWS * COLUMNS);
-
 	}
 	body[position / ROWS][position % COLUMNS] = 2;
 }
@@ -73,7 +70,7 @@ bool Game::keyInput(int key)
 
 bool Game::checkDefeat()
 {
-	return (!(up(true) || down(true)) || left(true) || right(true));
+	return (up(true) || down(true) || left(true) || right(true))?false:true;
 }
 
 bool Game::checkVictory()
@@ -116,9 +113,9 @@ bool Game::up(bool test)
 				success = true;
 				if (test == true) return success;
 				body[row][col] = body[row][col] * 2;
-				for (int i = row + 1; i < ROWS-1; i++)
+				for (int i = row + 1; i < ROWS; i++)
 				{
-					if (i < ROWS - 2) body[i][col] = body[i + 1][col];
+					if (i < ROWS - 1) body[i][col] = body[i + 1][col];
 					else body[i][col] = 0;
 				}
 			}
@@ -194,9 +191,9 @@ bool Game::left(bool test)
 				success = true;
 				if (test == true) return success;
 				body[row][col] = body[row][col] * 2;
-				for (int i = col + 1; i < COLUMNS - 1; i++)
+				for (int i = col + 1; i < COLUMNS; i++)
 				{
-					if (i < COLUMNS - 2) body[row][i] = body[row][i + 1];
+					if (i < COLUMNS - 1) body[row][i] = body[row][i + 1];
 					else body[row][i] = 0;
 				}
 			}
@@ -269,15 +266,13 @@ int main()
 	Game1.print();
 	for (;;)
 	{
-		if (Game1.keyInput(getKey()) == false)
-		{
-			if (Game1.checkDefeat())
-			{
-				cout << "You suck!";
-				return 0;
-			}
-		}
+		Game1.keyInput(getKey());
 		Game1.print();
+		if (Game1.checkDefeat() == true)
+		{
+			cout << "You suck!";
+			return 0;
+		}
 		if (Game1.checkVictory() == true)
 		{
 			cout << "You are awesome!";

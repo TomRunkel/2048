@@ -15,8 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="d.cpp">
+    <Library Include="d.cpp">
       <Filter>Quelldateien</Filter>
-    </ClCompile>
+    </Library>
   </ItemGroup>
 </Project>
