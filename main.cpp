@@ -65,7 +65,7 @@ bool Game::keyInput(int key)
 	if (key == 80) return down(false);
 	if (key == 75) return left(false);
 	if (key == 77) return right(false);
-	if (key == 'q') return 1; exit(0);
+	if (key == 'q') exit(0);
 }
 
 bool Game::checkDefeat()
